@@ -6,7 +6,7 @@
 **You can't tell the person what to do. You can only change what their memories mean.**
 
 [![Version](https://img.shields.io/badge/version-1.0.0-8b7cff?style=for-the-badge)](#)
-[![Platform](https://img.shields.io/badge/platform-GitHub%20Pages-171923?style=for-the-badge)](#publish-on-github-pages)
+[![Platform](https://img.shields.io/badge/platform-GitHub%20Pages-171923?style=for-the-badge)](#https://nitesh401.github.io/memento-engine/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-51d6b2?style=for-the-badge)](LICENSE)
 [![AI Model](https://img.shields.io/badge/AI-local%20utility%20model-e8a2ff?style=for-the-badge)](#how-the-ai-works)
 
