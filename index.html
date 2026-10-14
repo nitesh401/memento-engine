@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#090d13" />
+  <meta name="description" content="MEMENTO ENGINE — a psychological simulation where you guide an autonomous mind by editing what it remembers." />
+  <title>MEMENTO ENGINE — Cognitive Simulation</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <main id="app" class="app-shell">
+    <header class="topbar">
+      <div class="brand-lockup">
+        <div class="brand-mark"><span></span><span></span><span></span></div>
+        <div>
+          <div class="brand-name">MEMENTO <span>ENGINE</span></div>
+          <div class="brand-sub">COGNITIVE SIMULATION <i></i> BUILD 1.0.0</div>
+        </div>
+      </div>
+      <div class="top-status">
+        <div class="status-pill"><span class="status-dot"></span><span id="system-status">SYSTEM STABLE</span></div>
+        <div class="run-id">SESSION <span id="session-id">ME-001</span></div>
+        <button id="restart-btn" class="icon-button" title="Restart simulation" aria-label="Restart simulation">↻</button>
+      </div>
+    </header>
+
+    <section class="mission-strip">
+      <div class="mission-index"><span class="eyebrow">ACTIVE SUBJECT</span><strong>SUBJECT 01 <span class="slash">/</span> ELIAN VOSS</strong></div>
+      <div class="mission-center"><span class="pulse-ring"></span><span id="mission-label">AWAITING COGNITIVE LINK</span></div>
+      <div class="mission-location"><span class="eyebrow">SECTOR</span><strong id="sector-number">00 <span class="slash">/</span> 04</strong></div>
+    </section>
+
+    <section id="game-layout" class="game-layout is-locked" aria-label="Game interface">
+      <aside class="panel subject-panel">
+        <div class="panel-heading"><span>01 / SUBJECT PROFILE</span><span class="tiny-live"><i></i> LIVE</span></div>
+        <div class="subject-card">
+          <div class="portrait-wrap">
+            <div class="portrait-halo"></div>
+            <svg class="portrait" viewBox="0 0 160 170" role="img" aria-label="Abstract portrait of the simulated survivor">
+              <defs><linearGradient id="coat" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#a7c6cc"/><stop offset="1" stop-color="#3b5965"/></linearGradient><linearGradient id="face" x1="0" x2="1"><stop stop-color="#d4bba6"/><stop offset="1" stop-color="#7d6f72"/></linearGradient></defs>
+              <path d="M17 170 Q20 116 54 107 L65 98 L98 98 L110 108 Q145 118 147 170Z" fill="url(#coat)" opacity=".9"/>
+              <path d="M56 103 L57 84 L99 83 L105 109 L80 132Z" fill="#344d5a"/>
+              <path d="M49 45 Q52 14 82 15 Q113 17 113 48 L108 78 Q99 96 81 98 Q61 93 52 76Z" fill="url(#face)"/>
+              <path d="M48 49 Q38 17 68 8 Q101 -1 115 22 Q124 39 112 57 L108 39 Q90 31 76 26 Q69 44 51 48Z" fill="#25353f"/>
+              <path d="M51 53 Q44 37 37 50 Q34 65 52 69" fill="#8e7f7c"/><path d="M111 53 Q119 39 126 51 Q127 64 109 69" fill="#8e7f7c"/>
+              <path d="M58 56 Q66 51 73 56 M88 56 Q96 51 103 56" stroke="#3e444c" stroke-width="3" stroke-linecap="round" fill="none"/>
+              <path d="M78 61 L75 72 L83 74" stroke="#8e7572" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <path d="M70 83 Q81 88 92 82" stroke="#684f52" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <path d="M62 112 L80 131 L99 111" stroke="#d7e7e5" stroke-width="2" fill="none" opacity=".65"/>
+              <path d="M43 128 L35 170 M116 128 L126 170" stroke="#d7e7e5" stroke-width="2" opacity=".22"/>
+              <circle cx="101" cy="60" r="2.3" fill="#f2c97d"/><path d="M102 61 L122 71" stroke="#f2c97d" opacity=".7"/>
+            </svg>
+            <span class="portrait-scanline"></span>
+          </div>
+          <div class="subject-name">Elian Voss <span class="subject-id">#01</span></div>
+          <div class="subject-detail">HABITAT ENGINEER <span>·</span> AGE 34</div>
+          <p class="subject-quote" id="subject-quote">“I can almost remember the way out.”</p>
+        </div>
+
+        <div class="metric-section">
+          <div class="section-label">NEURAL INTEGRITY <strong id="integrity-value">92%</strong></div>
+          <div class="bar-track integrity-track"><div id="integrity-bar" class="bar-fill" style="width:92%"></div></div>
+          <div class="section-label metric-spaced">COGNITIVE LOAD <strong id="load-value">18%</strong></div>
+          <div class="bar-track load-track"><div id="load-bar" class="bar-fill" style="width:18%"></div></div>
+          <div class="section-label metric-spaced">INTERVENTION SIGNALS <strong id="signal-value">06</strong></div>
+          <div class="signal-row" id="signal-pips"><i class="filled"></i><i class="filled"></i><i class="filled"></i><i class="filled"></i><i class="filled"></i><i class="filled"></i></div>
+        </div>
+
+        <div class="traits-section">
+          <div class="section-label">INFERRED DISPOSITION <span class="section-note">EST.</span></div>
+          <div class="trait-row"><span>Fear response</span><div class="mini-track"><i id="trait-fear" style="width:48%"></i></div><b id="trait-fear-value">48</b></div>
+          <div class="trait-row"><span>Curiosity</span><div class="mini-track"><i id="trait-curiosity" style="width:54%"></i></div><b id="trait-curiosity-value">54</b></div>
+          <div class="trait-row"><span>Trust</span><div class="mini-track"><i id="trait-trust" style="width:42%"></i></div><b id="trait-trust-value">42</b></div>
+          <div class="trait-row"><span>Resolve</span><div class="mini-track"><i id="trait-resolve" style="width:52%"></i></div><b id="trait-resolve-value">52</b></div>
+          <p class="micro-copy">Disposition is inferred from memory associations. It may shift after every intervention.</p>
+        </div>
+      </aside>
+
+      <section class="center-column">
+        <div class="scene-panel panel">
+          <div class="scene-header">
+            <div><div class="eyebrow">CURRENT ENVIRONMENT <span class="separation">/</span> <span id="room-code">SECTOR 01-A</span></div><h1 id="room-title">The Red Corridor</h1><p id="room-subtitle">Emergency lighting · Access route compromised</p></div>
+            <div class="scene-header-right"><div class="environment-tag"><span class="tag-dot"></span><span id="environment-status">UNSTABLE</span></div><div class="coords" id="room-coords">X: 04.18 / Y: 11.02</div></div>
+          </div>
+          <div class="scene-wrap" id="scene-wrap">
+            <canvas id="scene-canvas" aria-label="Animated view of the survivor's environment"></canvas>
+            <div class="scene-overlay top-left">VISUAL FEED <span>LIVE</span></div>
+            <div class="scene-overlay top-right" id="scene-weather">ATMOSPHERE: UNKNOWN</div>
+            <div class="scene-crosshair"><i></i><i></i><i></i><i></i></div>
+            <div class="scene-caption"><span class="caption-line"></span><span id="scene-caption-text">A light flickers beyond the sealed door.</span></div>
+            <div class="scene-vignette"></div>
+          </div>
+          <div class="scene-footer"><div class="footer-data"><span class="tiny-icon">⌁</span><span>PERCEPTION RENDER</span><b id="perception-state">MEMORY-TINTED</b></div><div class="footer-data"><span class="tiny-icon">◈</span><span>THREAT LEVEL</span><b id="threat-value" class="threat-medium">MODERATE</b></div><div class="scene-dots"><i class="active"></i><i></i><i></i></div></div>
+        </div>
+
+        <div class="decision-panel panel">
+          <div class="decision-topline"><div class="panel-heading"><span>02 / AUTONOMOUS DECISION ENGINE</span><span class="engine-chip"><i></i> UTILITY MODEL ACTIVE</span></div><div class="decision-controls"><span id="turn-counter">TURN 01</span><button id="run-decision" class="primary-button"><span class="button-symbol">▶</span> RUN NEXT THOUGHT <span class="button-key">↵</span></button></div></div>
+          <div class="decision-intro"><div class="thought-glyph">“</div><div><div class="eyebrow">INTERNAL MONOLOGUE <span class="separation">/</span> ELIAN</div><p id="internal-thought">The red light means something. I just can't reach the memory.</p></div></div>
+          <div class="candidate-heading"><span>LIKELY ACTIONS</span><span class="candidate-note">PREDICTED UTILITY <i>·</i> NOT A PLAYER COMMAND</span></div>
+          <div id="candidate-list" class="candidate-list"></div>
+          <div class="last-outcome" id="last-outcome" aria-live="polite"><span class="outcome-icon">◇</span><span>Awaiting first autonomous choice. Modify a memory, or observe what the subject does without intervention.</span></div>
+        </div>
+
+        <div class="event-log panel">
+          <div class="panel-heading"><span>03 / BLACK BOX TRANSCRIPT</span><button id="toggle-log" class="text-button">EXPAND LOG +</button></div>
+          <div id="log-list" class="log-list"><div class="log-entry"><span class="log-time">00:00</span><span class="log-kind system">SYS</span><span class="log-text">Cognitive interface initialized. Awaiting subject link.</span></div></div>
+        </div>
+      </section>
+
+      <aside class="panel memory-panel">
+        <div class="panel-heading"><span>04 / MEMORY LAB</span><span class="memory-count" id="memory-count">05 FRAGMENTS</span></div>
+        <div class="memory-intro"><div class="memory-orb"><span></span></div><div><h2>Association editor</h2><p>Change the emotional weight of a memory. Watch the mind adapt.</p></div></div>
+        <div class="memory-list-heading"><span>FRAGMENT ARCHIVE</span><span>SELECT TO INSPECT</span></div>
+        <div id="memory-list" class="memory-list"></div>
+
+        <div class="selected-memory" id="selected-memory">
+          <div class="selected-top"><span id="selected-type" class="memory-type">FEAR / DANGER</span><span id="selected-stability" class="stability-state">STABLE</span></div>
+          <h3 id="selected-title">The Red Corridor</h3>
+          <blockquote id="selected-quote">“The alarms turned red, and no one came back.”</blockquote>
+          <div class="memory-importance"><span>MEMORY TRACE</span><b id="selected-strength">76%</b></div>
+          <div class="bar-track memory-track"><div id="selected-strength-bar" class="bar-fill" style="width:76%"></div></div>
+          <div class="association-label"><span>ASSOCIATION WEIGHTS</span><span>0 — 100</span></div>
+          <div id="association-list" class="association-list"></div>
+          <div class="association-tools">
+            <div class="section-label">EDIT SELECTED ASSOCIATION <span class="section-note" id="selected-association-label">FEAR</span></div>
+            <div class="edit-buttons"><button id="dampen-btn" class="secondary-button">− DAMPEN</button><button id="amplify-btn" class="secondary-button">+ AMPLIFY</button></div>
+            <button id="reframe-btn" class="reframe-button"><span>↗</span> REFRAME ASSOCIATION <i>2 SIGNALS</i></button>
+            <p class="micro-copy">Reframing trades an association for its opposite. Every edit has a cost; no memory is consequence-free.</p>
+          </div>
+        </div>
+        <div class="lab-footer"><span class="lab-lock">⌑</span><span>LOCAL SIMULATION <b>· NO EXTERNAL AI</b></span><span id="save-indicator">AUTOSAVED</span></div>
+      </aside>
+    </section>
+
+    <footer class="app-footer"><span>© MEMENTO SYSTEMS <i>—</i> INTERNAL RESEARCH BUILD</span><span>DECISIONS ARE SIMULATED <i>·</i> CONSEQUENCES ARE NOT</span><span>MADE TO RUN LOCALLY <b>◇</b></span></footer>
+  </main>
+
+  <section id="intro-screen" class="intro-screen">
+    <div class="intro-grid"></div><div class="intro-glow"></div>
+    <div class="intro-top"><div class="brand-lockup"><div class="brand-mark large"><span></span><span></span><span></span></div><div><div class="brand-name">MEMENTO <span>ENGINE</span></div><div class="brand-sub">COGNITIVE SIMULATION <i></i> EXPERIMENT 01</div></div></div><span class="intro-version">BUILD 1.0.0 / LOCAL INSTANCE</span></div>
+    <div class="intro-content">
+      <div class="intro-kicker"><span class="kicker-line"></span> A DIFFERENT KIND OF SURVIVAL GAME</div>
+      <h1>You don't control<br />the <em>person.</em><br />You control the memory.</h1>
+      <p class="intro-description">Elian Voss is trapped inside a failing habitat. You can't move him or tell him what to do. You can only change what his mind remembers — and watch the decisions that follow.</p>
+      <div class="intro-features"><div><span class="feature-number">01</span><span>EDIT MEMORY</span></div><div><span class="feature-number">02</span><span>OBSERVE CHOICE</span></div><div><span class="feature-number">03</span><span>LIVE WITH IT</span></div></div>
+      <div class="intro-actions"><button id="start-btn" class="primary-button intro-start"><span class="button-symbol">◈</span> INITIALIZE COGNITIVE LINK <span class="button-key">ENTER ↵</span></button><button id="continue-btn" class="continue-button hidden">CONTINUE SAVED SESSION ↗</button><p class="intro-footnote"><span class="status-dot"></span> RUNS ENTIRELY IN YOUR BROWSER <i>·</i> NO ACCOUNT <i>·</i> NO API KEY</p></div>
+    </div>
+    <div class="intro-art" aria-hidden="true"><div class="art-orbit orbit-a"></div><div class="art-orbit orbit-b"></div><div class="art-orbit orbit-c"></div><div class="art-figure"><div class="figure-head"></div><div class="figure-neck"></div><div class="figure-body"></div><div class="figure-light"></div></div><div class="floating-memory memory-a"><span>MEMORY 00A</span><b>RED LIGHT / DANGER</b><i>ASSOCIATION: 76%</i></div><div class="floating-memory memory-b"><span>MEMORY 02C</span><b>THE VOICE</b><i>TRACE: FRAGMENTED</i></div><div class="floating-memory memory-c"><span>NEURAL TRACE</span><b>ELIAN_VOSS</b><i>IDENTITY STABILITY: 92%</i></div><div class="art-coordinate coord-a">04° 18' 22.1" N</div><div class="art-coordinate coord-b">MEMORY FIELD / FIG. 01</div></div>
+    <div class="intro-bottom"><span>AN EXPERIMENT IN AUTONOMY</span><span>MEMORY IS NOT THE SAME AS TRUTH <b>↗</b></span></div>
+  </section>
+
+  <div id="ending-screen" class="ending-screen hidden" role="dialog" aria-modal="true" aria-labelledby="ending-title">
+    <div class="ending-card"><div class="ending-eyebrow"><span class="status-dot"></span> SIMULATION COMPLETE <span id="ending-code">OUTCOME 01</span></div><div class="ending-symbol" id="ending-symbol">◈</div><h2 id="ending-title">A mind, rewritten.</h2><p id="ending-copy"></p><div class="ending-stats" id="ending-stats"></div><button id="play-again-btn" class="primary-button"><span class="button-symbol">↻</span> BEGIN A NEW INSTANCE</button><p class="ending-note">Different memories. Different choices. A different person at the end.</p></div>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="game.js"></script>
+</body>
+</html>
